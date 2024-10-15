@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Hosting.Server.Features;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using GrpcServiceSample.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +10,7 @@ builder.WebHost.ConfigureKestrel(options =>
     options.ListenAnyIP(5001, listenOptions =>
     {
         listenOptions.Protocols = HttpProtocols.Http2;
-        listenOptions.UseHttps("path/to/your/certificate.pfx", "your_certificate_password");
+        listenOptions.UseHttps("./certificate.pfx", "Nouri5700");
     });
 });
 
@@ -18,14 +20,7 @@ var app = builder.Build();
 app.MapGrpcService<GreeterService>();
 
 
-app.MapGet("/", (context) =>
-{
+app.MapGet("/", () => Task.FromResult("gRPC server is running on https://localhost:5001"));
 
-    var addressFeature = context.Request.HttpContext.Features.Get<IServerAddressesFeature>();
-    var addresses = string.Join(", ", addressFeature.Addresses);
-
-
-    return $"gRPC server is running on {addresses}";
-});
 
 app.Run();

@@ -32,3 +32,5 @@
 /home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/obj/Release/net8.0/GrpcServiceSample.pdb
 /home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/obj/Release/net8.0/GrpcServiceSample.genruntimeconfig.cache
 /home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/obj/Release/net8.0/ref/GrpcServiceSample.dll
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/obj/Release/net8.0/GrpcServiceSample.sourcelink.json
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/bin/Release/net8.0/Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll

@@ -32,3 +32,10 @@
 /home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/obj/Debug/net8.0/GrpcServiceSample.pdb
 /home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/obj/Debug/net8.0/GrpcServiceSample.genruntimeconfig.cache
 /home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/obj/Debug/net8.0/ref/GrpcServiceSample.dll
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/obj/Debug/net8.0/GrpcServiceSample.sourcelink.json
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/bin/Debug/net8.0/publish/web.config
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/bin/Debug/net8.0/publish/appsettings.Development.json
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/bin/Debug/net8.0/publish/appsettings.json
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/bin/Debug/net8.0/publish/GrpcServiceSample.deps.json
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/bin/Debug/net8.0/publish/GrpcServiceSample.runtimeconfig.json
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/bin/Debug/net8.0/Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll

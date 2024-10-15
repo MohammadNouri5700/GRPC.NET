@@ -12,3 +12,4 @@
 /home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/Grpc.Net.Client.dll
 /home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/Grpc.Net.ClientFactory.dll
 /home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/Grpc.Net.Common.dll
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
