@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using GrpcServiceSample.Services;
 using Microsoft.AspNetCore.HttpOverrides;
+using Grpc.Net.Compression;
+using Microsoft.ApplicationInsights.AspNetCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,8 +22,26 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
         string certPath = "./certificate.pfx";
         string certPassword = "123456";
         listenOptions.UseHttps(certPath, certPassword);
+
+     
     });
+
+    serverOptions.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(2); 
+    serverOptions.Limits.RequestHeadersTimeout = TimeSpan.FromSeconds(30);
+
 });
+
+builder.Services.AddMemoryCache();
+
+builder.Services.AddGrpc(options =>
+{
+    options.CompressionProviders.Add(new GzipCompressionProvider(System.IO.Compression.CompressionLevel.Fastest));
+    options.ResponseCompressionAlgorithm = "gzip";
+    options.ResponseCompressionLevel = System.IO.Compression.CompressionLevel.Fastest;
+});
+
+builder.Services.AddApplicationInsightsTelemetry();
+ThreadPool.SetMinThreads(workerThreads: 100, completionPortThreads: 100);
 
 var app = builder.Build();
 
@@ -34,7 +55,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 app.MapGrpcService<GreeterService>();
 
 // Add a simple HTTP GET route
-app.MapGet("/", () => "Hello, the gRPC server is running on https://localhost:5001");
+app.MapGet("/", () => "GRPC SERVICE IS RUNNING");
 
 // Start the application
 app.Run();

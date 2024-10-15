@@ -1,21 +1,35 @@
 using Grpc.Core;
 using GrpcServiceSample;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace GrpcServiceSample.Services;
 
+
 public class GreeterService : Greeter.GreeterBase
 {
-    private readonly ILogger<GreeterService> _logger;
-    public GreeterService(ILogger<GreeterService> logger)
+
+     private readonly IMemoryCache _cache;
+ 
+
+    public GreeterService(IMemoryCache cache)
     {
-        _logger = logger;
+         _cache = cache;
     }
 
     public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
     {
-        return Task.FromResult(new HelloReply
+        if (!_cache.TryGetValue(request.Name, out HelloReply cachedResponse))
         {
-            Message = "Hello " + request.Name
-        });
+            var response = new HelloReply
+            {
+                Message = $"Hello {request.Name}"
+            };
+
+            _cache.Set(request.Name, response, TimeSpan.FromMinutes(10)); // Store 10 minutes
+
+            return Task.FromResult(response);
+        }
+
+        return Task.FromResult(cachedResponse);
     }
 }
