@@ -1,15 +1,31 @@
-using GrpcServiceSample.Services;
+using Microsoft.AspNetCore.Hosting.Server.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddGrpc();
-builder.Services.AddControllers();
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5001, listenOptions =>
+    {
+        listenOptions.Protocols = HttpProtocols.Http2;
+        listenOptions.UseHttps("path/to/your/certificate.pfx", "your_certificate_password");
+    });
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 app.MapGrpcService<GreeterService>();
-app.MapGet("/", () => "gRPC server is running.");
-app.MapControllers();
+
+
+app.MapGet("/", (context) =>
+{
+
+    var addressFeature = context.Request.HttpContext.Features.Get<IServerAddressesFeature>();
+    var addresses = string.Join(", ", addressFeature.Addresses);
+
+
+    return $"gRPC server is running on {addresses}";
+});
+
 app.Run();
