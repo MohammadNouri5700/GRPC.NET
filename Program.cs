@@ -2,8 +2,11 @@ using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using GrpcServiceSample.Services;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddGrpc();
 
 builder.WebHost.ConfigureKestrel(options =>
 {
@@ -16,11 +19,8 @@ builder.WebHost.ConfigureKestrel(options =>
 
 var app = builder.Build();
 
-
 app.MapGrpcService<GreeterService>();
 
-
-app.MapGet("/", () => Task.FromResult("gRPC server is running on https://localhost:5001"));
-
+app.MapGet("/", () => "gRPC server is running on https://localhost:5001");
 
 app.Run();
