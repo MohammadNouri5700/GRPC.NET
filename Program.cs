@@ -3,6 +3,7 @@ using GrpcServiceSample.Services;
 using Microsoft.AspNetCore.HttpOverrides;
 using Grpc.Net.Compression;
 using Microsoft.ApplicationInsights.AspNetCore;
+using Grpc.Net.Client;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +29,7 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
 
     serverOptions.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(2); 
     serverOptions.Limits.RequestHeadersTimeout = TimeSpan.FromSeconds(30);
+    serverOptions.Limits.MaxRequestBodySize = 256 * 1024; // 256KB
 
 });
 
@@ -41,7 +43,20 @@ builder.Services.AddGrpc(options =>
 });
 
 builder.Services.AddApplicationInsightsTelemetry();
-ThreadPool.SetMinThreads(workerThreads: 100, completionPortThreads: 100);
+
+
+builder.Services.AddSingleton(GrpcChannel.ForAddress("https://localhost:5001", new GrpcChannelOptions
+{
+    HttpHandler = new SocketsHttpHandler
+    {
+        PooledConnectionIdleTimeout = TimeSpan.FromMinutes(5),
+    }
+}));
+
+
+ThreadPool.SetMinThreads(workerThreads: 300, completionPortThreads: 300);
+
+
 
 var app = builder.Build();
 
