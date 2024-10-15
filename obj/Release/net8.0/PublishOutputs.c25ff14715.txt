@@ -1,0 +1,14 @@
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/GrpcServiceSample
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/appsettings.Development.json
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/appsettings.json
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/GrpcServiceSample.dll
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/GrpcServiceSample.deps.json
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/GrpcServiceSample.runtimeconfig.json
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/GrpcServiceSample.pdb
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/Google.Protobuf.dll
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/Grpc.AspNetCore.Server.dll
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/Grpc.AspNetCore.Server.ClientFactory.dll
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/Grpc.Core.Api.dll
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/Grpc.Net.Client.dll
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/Grpc.Net.ClientFactory.dll
+/home/leo/Documents/A_Company/WEB/grpc/GrpcServiceSample/publish/Grpc.Net.Common.dll
